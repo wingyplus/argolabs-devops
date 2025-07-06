@@ -8,4 +8,22 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: argolabs-beta
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argolabs-rc
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argolabs-prod
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
   name: argolabs-test

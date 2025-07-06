@@ -1,17 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: app
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/wingyplus/argolabs-devops.git
-    targetRevision: HEAD
-    path: app
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: argolabs
-  syncPolicy:
-    automated: 
-      selfHeal: true
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - list: 
+        elements:
+          - env: beta
+          - env: rc
+          - env: prod
+  template:
+    metadata:
+      name: app-{{ .env }}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/wingyplus/argolabs-devops.git
+        targetRevision: HEAD
+        path: app
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argolabs-{{ .env }}
+      syncPolicy:
+        automated: 
+          selfHeal: true
