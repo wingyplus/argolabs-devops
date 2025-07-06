@@ -20,7 +20,7 @@ spec:
       source:
         repoURL: https://github.com/wingyplus/argolabs-devops.git
         targetRevision: HEAD
-        path: app
+        path: environments/{{ .env }}
       destination:
         server: https://kubernetes.default.svc
         namespace: argolabs-{{ .env }}
