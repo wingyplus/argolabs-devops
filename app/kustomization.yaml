@@ -4,6 +4,6 @@ namespace: argolabs-test
 resources:
 - deployment.yaml
 images:
-- digest: sha256:cfe575d352307de0957cc3da35dc898faa7fc7cd2fc28d1dac89d107a3d9d863
+- digest: sha256:14ad5d7639a85787b76a5205e53505f191f9d752d37783109c083ffadebe3dcb
   name: ghcr.io/wingyplus/argolabs/app
-  newTag: 0.1.0-2
+  newTag: 0.1.0-3
